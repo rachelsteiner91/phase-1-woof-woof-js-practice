@@ -5,6 +5,10 @@ document.addEventListener("DOMContentLoaded", () => {
     // dogBarDiv.appendChild(dogBarP) //adding p to the dog bar div
     // const dogBarSpan = document.createElement("span") // add a span element
     // dogBarP.appendChild(dogBarSpan) // adding the span to the p element, not the div
+    const dogInfoDiv = document.querySelector("#dog-info")
+    const pupsImg = document.createElement("img") 
+    const pupsName = document.createElement("h2")
+    const button = document.createElement("button")
     
     fetch("http://localhost:3000/pups") // we can only get the pup names from inside the db.json, promise that once you fetch this url...
     .then(response => response.json()) //always the same
@@ -20,15 +24,11 @@ document.addEventListener("DOMContentLoaded", () => {
             
             dogBarSpan.addEventListener("click", (e) => { //when a user clicks,
                 e.preventDefault()
-                const dogInfoDiv = document.querySelector("#dog-info")
-                const pupsImg = document.createElement("img") 
                 pupsImg.src = pups.image
                 dogInfoDiv.appendChild(pupsImg)
-                const pupsName = document.createElement("h2")
                 pupsName.textContent = pups.name
                 dogInfoDiv.appendChild(pupsName)
                 
-                const button = document.createElement("button")
                 button.textContent = pups.isGoodDog? "Good Dog!" : "Bad Dog!" // this is telling  you to go to the object, look at the key. is this a dog? if true, it's the first option. if false, it's the second option
                 dogInfoDiv.appendChild(button) 
             })
@@ -37,7 +37,7 @@ document.addEventListener("DOMContentLoaded", () => {
 })
 //when it says something iss undefined, it probably means you need to move it within the scope
 
-//right now - the dogs are all populating when I click. so this means, I need to move the const dogInfoDiv, const pupsImg, and Const pupsName up to the global variables at the top
+//right now - the dogs are all populating when I click. so this means, I need to move the const dogInfoDiv, const pupsImg, and Const pupsName and button up to the global variables at the top
 
 // When a user clicks = add click event on a pup's `span` in the `div#dog-bar`, 
 //that pup's info contains the following information: 
@@ -54,7 +54,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
-
+///
 
 
 
